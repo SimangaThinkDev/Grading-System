@@ -67,4 +67,10 @@ def send_test_score_with_pdf(answer_string: str, correct_answers: str, explanati
     Best regards,
     Simangaliso Innocent Phakwe
     """
-    pass
+    
+    # Structure the email
+    msg = MIMEMultipart()
+    msg["From"] = sender_email
+    msg["To"] = student_email
+    msg["Subject"] = subject
+    msg.attach(MIMEText(body, "plain"))
