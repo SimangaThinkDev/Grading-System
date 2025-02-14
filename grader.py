@@ -84,3 +84,23 @@ def send_test_score_with_pdf(answer_string: str, correct_answers: str, explanati
         encoders.encode_base64(part)
         part.add_header("Content-Disposition", f"attachment; filename={pdf_filename}")
         msg.attach(part)
+
+
+    try:
+        # Connect to SMTP server and send email
+        
+        # Start the smtp server
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        # prompt login
+        server.login(sender_email, sender_password)
+        
+        # Send Email
+        server.sendmail(sender_email, student_email, msg.as_string(), i)
+        
+        # Quit server
+        server.quit()
+        print(f"Score and explanation sent to {student_email}")
+        time.sleep(2)
+    except Exception as e:
+        print(f"Failed to send email: {e}")
