@@ -126,3 +126,17 @@ explanations = [
     "V.add('C') adds 'C' to the set.",
     "Adding an existing element to a set does nothing."
 ]
+
+i = 1
+while i != 0:
+    try:
+        with open(f"answers/{i}.txt", "r") as f:
+            
+            res = f.read()
+        
+        total_user_information = "".join([a for a in res.split("\n")])
+        send_test_score_with_pdf(total_user_information, correct_answers, explanations, "testemail@gmail.com", "testpass", i)
+        i += 1
+    except IndexError:
+        print("Job Done!")
+        i = 0
