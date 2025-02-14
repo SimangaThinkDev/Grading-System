@@ -31,4 +31,6 @@ The following library must be installed manually:
 To install `reportlab`, run:
 ```sh
 pip install reportlab
+```
 
+### Usage: pass your test results to the student answers folder and enjoy

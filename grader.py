@@ -131,7 +131,6 @@ i = 1
 while i != 0:
     try:
         with open(f"answers/{i}.txt", "r") as f:
-            
             res = f.read()
         
         total_user_information = "".join([a for a in res.split("\n")])
