@@ -74,3 +74,13 @@ def send_test_score_with_pdf(answer_string: str, correct_answers: str, explanati
     msg["To"] = student_email
     msg["Subject"] = subject
     msg.attach(MIMEText(body, "plain"))
+
+
+    # PDF formatting and writing
+    # This woul be the same as creating a foundation and the building on it
+    with open(pdf_filename, "rb") as attachment:
+        part = MIMEBase("application", "octet-stream")
+        part.set_payload(attachment.read())
+        encoders.encode_base64(part)
+        part.add_header("Content-Disposition", f"attachment; filename={pdf_filename}")
+        msg.attach(part)
