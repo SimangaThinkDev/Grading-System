@@ -104,3 +104,25 @@ def send_test_score_with_pdf(answer_string: str, correct_answers: str, explanati
         time.sleep(2)
     except Exception as e:
         print(f"Failed to send email: {e}")
+
+
+# Example Usage
+# The correct answers for the first 15 questions
+correct_answers = "bbdcadccbabdadd"
+explanations = [
+    "Multiplication comes before over addition.",
+    "True is a boolean type in Python.",
+    "int() truncates the decimal part.",
+    "A[1::2] returns every second character starting from index 1.",
+    "find('el') returns the index of the first occurrence of 'el'.",
+    "String concatenation results in '12', not numeric addition.",
+    "F.upper() converts a string to uppercase.",
+    "Negative indexing means tuple1[-1] gives the last element.",
+    "A[1] returns the second item, which is a list in this case.",
+    "A[0][1] accesses the second element of the first tuple.",
+    "split(',') separates a string into a list based on commas.",
+    "A+B concatenates two lists.",
+    "set(A) converts a list to a set.",
+    "V.add('C') adds 'C' to the set.",
+    "Adding an existing element to a set does nothing."
+]
