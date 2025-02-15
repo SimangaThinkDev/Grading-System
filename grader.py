@@ -8,7 +8,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
 
-def generate_pdf_report(student_answers, correct_answers, explanations, i):
+def generate_pdf_report(student_answers, correct_answers, explanations):
     """
     Generate a PDF report with answers and explanations.
     
@@ -35,7 +35,7 @@ def generate_pdf_report(student_answers, correct_answers, explanations, i):
     return filename
 
 
-def send_test_score_with_pdf(answer_string: str, correct_answers: str, explanations: str, sender_email: str, sender_password: str, i):
+def send_test_score_with_pdf(answer_string: str, correct_answers: str, explanations: str, sender_email: str, sender_password: str):
     """
     Separates answers and emails
     Uses the correct answer's string to calculate the score
@@ -52,7 +52,7 @@ def send_test_score_with_pdf(answer_string: str, correct_answers: str, explanati
     student_email = "siphakwe@gmail.com"
     
     # Generate PDF with results and explanations
-    pdf_filename = generate_pdf_report(student_answers, correct_answers, explanations, i)
+    pdf_filename = generate_pdf_report(student_answers, correct_answers, explanations)
 
     # Create the email
     score = sum(1 for a, b in zip(student_answers, correct_answers) if a == b)
@@ -96,7 +96,7 @@ def send_test_score_with_pdf(answer_string: str, correct_answers: str, explanati
         server.login(sender_email, sender_password)
         
         # Send Email
-        server.sendmail(sender_email, student_email, msg.as_string(), i)
+        server.sendmail(sender_email, student_email, msg.as_string())
         
         # Quit server
         server.quit()
@@ -134,7 +134,7 @@ while i != 0:
             res = f.read()
         
         total_user_information = "".join([a for a in res.split("\n")])
-        send_test_score_with_pdf(total_user_information, correct_answers, explanations, "testemail@gmail.com", "testpass", i)
+        send_test_score_with_pdf(total_user_information, correct_answers, explanations, "testemail@gmail.com", "testpass")
         i += 1
     except IndexError:
         print("Job Done!")
