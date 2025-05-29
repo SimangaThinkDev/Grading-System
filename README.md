@@ -1,5 +1,5 @@
 ## Grading-System
-Grading sytem with email response and decriptive response pdf that reviews the test
+Grading sytem with email response and descriptive response pdf that reviews the test
 
 # This Program will
 - Use Answers to generate Score
